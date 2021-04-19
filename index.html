@@ -6,10 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+    <title>Meme-generator</title>
 </head>
 
-<body>
+<body onload="init()">
+    <header class="main-header flex align-center space-between">
+        <logo class="logo">logo</logo>
+        <nav class="nav-bar">
+            <ul class="main-manu flex column clean-list">
+                <li class="gallery">Gallery</li>
+                <li class="memes">Memes</li>
+                <li class="about">About</li>
+            </ul>
+        </nav>
+    </header>
+    <section class="search-bar flex container space-between">
+        <input type="text" name="search" placeholder="Search keys words">
+        <div class="sort-by">Lorem ipsum dolor sit amet.</div>
+    </section>
+    <main class="img-gallery grid align-center space-between container">
+        <img src="./meme-imgs (square)/1.jpg">
+        <img src="./meme-imgs (square)/2.jpg">
+        <img src="./meme-imgs (square)/3.jpg">
+        <img src="./meme-imgs (square)/4.jpg">
+        <img src="./meme-imgs (square)/5.jpg">
+        <img src="./meme-imgs (square)/6.jpg">
+        <img src="./meme-imgs (square)/7.jpg">
+    </main>
 
 </body>
 <script src="js/main.js"></script>
@@ -17,4 +40,5 @@
 <script src="js/meme-editor-controller.js"></script>
 <script src="js/image-gallery-service.js"></script>
 <script src="js/meme-editor-service.js"></script>
+
 </html>
