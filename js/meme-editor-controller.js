@@ -6,17 +6,18 @@ var gCanvas;
 var gCtx;
 
 function initEditor(imgId) {
-    renderEditor(imgId);
-    gCanvas = document.getElementById('main-canvas');
-    console.log(gCanvas);
-    gCtx = gCanvas.getContext('2d');
+    renderEditor();
+    renderCanvas();
+    drawImg(imgId);
+    addListeners();
+    // console.log(gCtx.font);
 }
 
-function renderEditor(imgId, ev) {
+function renderEditor(ev) {
     gElMain.classList.add('editor');
     var strHtml = `
     <section class="meme-editor container flex space-between">
-    <canvas id="main-canvas" height="750" width="750" ></canvas>
+    <div class="canvas-container"></div>
     <section class="control-panel">
         <label for="text-line"></label>
         <input class="text-line" id="text-line" type="text" onchange="onInputText(this.value)">
@@ -25,12 +26,11 @@ function renderEditor(imgId, ev) {
         <button class="btn-switch btn">&#8645;</button>
         <button class="btn-add-line btn">&#43;</button>
         <button class="btn-delete-line btn">&#x1f5d1;</button>
-        <button class="btn-font-increase btn">&#128474;</button>
-        <button class="btn-font-decrease btn">&#x1f5db;</button>
-        <button class="btn-align-right btn">-</button>
-        <button class="btn-align-center btn">-</button>
-        <button class="btn-align-left btn">-</button>
-        <button class="btn-align-left btn">-</button>
+        <button class="btn-font-size btn" data-value="1">&#128474;</button>
+        <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
+        <button class="btn-align btn" data-value="right">-</button>
+        <button class="btn-align btn" data-value="center">-</button>
+        <button class="btn-align btn" data-value="left">-</button>
         <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
             <option value="line">font</option>
             <option value="triangle">font</option>
@@ -46,15 +46,48 @@ function renderEditor(imgId, ev) {
     </section>
     </section>`;
     gElMain.innerHTML = strHtml;
-    var img = getImg(imgId);
-    drawImgFromlocal(img.url);
+
     console.log(ev);
     // resizeCanvas(ev);
 }
 
+function renderCanvas() {
+    var strHtml = `<canvas id="main-canvas" height="750" width="750" ></canvas>`;
+    document.querySelector('.canvas-container').innerHTML = strHtml;
+    gCanvas = document.getElementById('main-canvas');
+    gCtx = gCanvas.getContext('2d');
+}
 
 function onInputText(text) {
     updateLines(text);
 }
 
-document.querySelector('.btn-font-increase').addEventListener("click", updateFontSize(1));
+function addListeners() {
+    onBtnFontSize();
+    onBtnTextAlign();
+    renderCanvas();
+}
+
+function onBtnFontSize() {
+    var elFontSizes = document.querySelectorAll('.btn-font-size');
+    Array.from(elFontSizes).map(btn => btn.addEventListener('click', updateFontSize));
+}
+
+function onBtnTextAlign() {
+    var elFontSizes = document.querySelectorAll('.btn-align');
+    Array.from(elFontSizes).map(btn => btn.addEventListener('click', updateTextAlign));
+}
+
+// addMouseListeners()
+// addTouchListeners()
+// window.addEventListener('resize', () => {
+// resizeCanvas()
+// })
+// console.log(gCtx.font);
+
+
+// Window.addEventListener('click', doStuff(event));
+
+// function doStuff(event) {
+//     console.log(event.target.class);
+// }

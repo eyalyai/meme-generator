@@ -30,7 +30,7 @@ function renderGallery(imgs) {
 function onImgSelect(imgId, ev) {
     // console.log('event', ev);
     // console.log('imgId:', imgId);
-    initEditor(imgId);
     document.querySelector('.gallery').hidden = true;
+    initEditor(imgId);
     ev.preventDefault();
 }
