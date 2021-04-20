@@ -43,6 +43,7 @@ function addListeners() {
     onBtnTextAlign();
     onBtnMove();
     onSwitchLine();
+    onRemoveLine();
     drawImg();
 }
 
@@ -64,14 +65,17 @@ function onBtnMove() {
 function onSwitchLine() {
     var elSwitchBtn = document.querySelector('.btn-switch');
     elSwitchBtn.addEventListener('click', switchLine);
-
 }
 
 function switchLine() {
     updateCurrLine();
     document.querySelector('.text-line').value = getCurrLine().txt;
     document.querySelector('.text-line').focus();
+}
 
+function onRemoveLine() {
+    var elRemovehBtn = document.querySelector('.btn-delete-line');
+    elRemovehBtn.addEventListener('click', removeLine);
 }
 
 // addMouseListeners()
