@@ -1,71 +1,49 @@
 'use strict'
 
 
-var gElMain = document.querySelector('.main-screen');
+var gElEditor = document.querySelector('.meme-editor');
+// var gElTxtValue = document.querySelector('.text-line').value;    
 var gCanvas;
 var gCtx;
 
 function initEditor(imgId) {
-    renderEditor();
+    document.querySelector('.meme-editor').classList.remove('hide');
     renderCanvas();
-    drawImg(imgId);
+    updateImgId(imgId);
+    drawImg();
     addListeners();
-    // console.log(gCtx.font);
 }
 
-function renderEditor(ev) {
-    gElMain.classList.add('editor');
-    var strHtml = `
-    <section class="meme-editor container flex space-between">
-    <div class="canvas-container"></div>
-    <section class="control-panel">
-        <label for="text-line"></label>
-        <input class="text-line" id="text-line" type="text" onchange="onInputText(this.value)">
-        <button class="btn-up btn">&#129045;</button>
-        <button class="btn-down btn">&#129047;</button>
-        <button class="btn-switch btn">&#8645;</button>
-        <button class="btn-add-line btn">&#43;</button>
-        <button class="btn-delete-line btn">&#x1f5d1;</button>
-        <button class="btn-font-size btn" data-value="1">&#128474;</button>
-        <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
-        <button class="btn-align btn" data-value="right">-</button>
-        <button class="btn-align btn" data-value="center">-</button>
-        <button class="btn-align btn" data-value="left">-</button>
-        <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
-            <option value="line">font</option>
-            <option value="triangle">font</option>
-        </select>
-        <button class="btn-border btn">A</button>
-        <button class="btn-color btn">&#127912</button>
-        <select class="sticker-select" name="sticker" id="sticker" onchange="onSetFont(this.value)">
-            <option value="line">sticker</option>
-            <option value="triangle">sticker</option>
-        </select>
-        <button class="btn-share btn">share</button>
-        <button class="btn-download btn">download</button>
-    </section>
-    </section>`;
-    gElMain.innerHTML = strHtml;
-
-    console.log(ev);
-    // resizeCanvas(ev);
-}
 
 function renderCanvas() {
-    var strHtml = `<canvas id="main-canvas" height="750" width="750" ></canvas>`;
-    document.querySelector('.canvas-container').innerHTML = strHtml;
     gCanvas = document.getElementById('main-canvas');
     gCtx = gCanvas.getContext('2d');
 }
 
-function onInputText(text) {
-    updateLines(text);
+function onInputText() {
+    drawImg();
+}
+
+function drawText() {
+    getCurrLine().txt = document.querySelector('.text-line').value;
+    var lines = getLines();
+    lines.forEach(line => {
+        gCtx.lineWidth = 2;
+        gCtx.strokeStyle = `${line.strokeColor}`;
+        gCtx.fillStyle = `${line.color}`;
+        gCtx.font = `${line.size}px ${line.font}`;
+        gCtx.textAlign = `${line.align}`;
+        gCtx.fillText(`${line.txt}`, `${line.position.x}`, `${line.position.y}`);
+        gCtx.strokeText(`${line.txt}`, `${line.position.x}`, `${line.position.y}`);
+    });
 }
 
 function addListeners() {
     onBtnFontSize();
     onBtnTextAlign();
-    renderCanvas();
+    onBtnMove();
+    onSwitchLine();
+    drawImg();
 }
 
 function onBtnFontSize() {
@@ -74,8 +52,26 @@ function onBtnFontSize() {
 }
 
 function onBtnTextAlign() {
-    var elFontSizes = document.querySelectorAll('.btn-align');
-    Array.from(elFontSizes).map(btn => btn.addEventListener('click', updateTextAlign));
+    var elAlignBtns = document.querySelectorAll('.btn-align');
+    Array.from(elAlignBtns).map(btn => btn.addEventListener('click', updateTextAlign));
+}
+
+function onBtnMove() {
+    var elMoveBtns = document.querySelectorAll('.btn-move');
+    Array.from(elMoveBtns).map(btn => btn.addEventListener('click', updateYPosition));
+}
+
+function onSwitchLine() {
+    var elSwitchBtn = document.querySelector('.btn-switch');
+    elSwitchBtn.addEventListener('click', switchLine);
+
+}
+
+function switchLine() {
+    updateCurrLine();
+    document.querySelector('.text-line').value = getCurrLine().txt;
+    document.querySelector('.text-line').focus();
+
 }
 
 // addMouseListeners()

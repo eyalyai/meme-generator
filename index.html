@@ -22,6 +22,45 @@
     </header>
 
     <main class="main-screen">
+        <section class="meme-editor hide container flex space-between">
+            <div class="canvas-container">
+                <canvas id="main-canvas" height="750" width="750"></canvas>
+            </div>
+            <section class="control-panel">
+                <label for="text-line"></label>
+                <input class="text-line" id="text-line" type="text" oninput="onInputText(this.value)" placeholder="enter your text">
+                <button class="btn-move btn" data-value="up">&#129045;</button>
+                <button class="btn-move btn" data-value="down">&#129047;</button>
+                <button class="btn-switch btn">&#8645;</button>
+                <button class="btn-add-line btn">&#43;</button>
+                <button class="btn-delete-line btn">&#x1f5d1;</button>
+                <button class="btn-font-size btn" data-value="1">&#128474;</button>
+                <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
+                <button class="btn-align btn" data-value="right">-</button>
+                <button class="btn-align btn" data-value="center">-</button>
+                <button class="btn-align btn" data-value="left">-</button>
+                <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
+                    <option value="line">font</option>
+                    <option value="triangle">font</option>
+                </select>
+                <button class="btn-border btn">A</button>
+                <button class="btn-color btn">&#127912</button>
+                <select class="sticker-select" name="sticker" id="sticker" onchange="onSetFont(this.value)">
+                    <option value="line">sticker</option>
+                    <option value="triangle">sticker</option>
+                </select>
+                <button class="btn-share btn">share</button>
+                <button class="btn-download btn">download</button>
+            </section>
+        </section>
+
+        <section class="gallery">
+            <section class="search-bar container flex space-between">
+                <input type="text" name="search" placeholder="Search keys words">
+                <div class="sort-by">Lorem ipsum dolor sit amet. - temp</div>
+            </section>
+            <section class="img-gallery container grid align-center space-between container"></section>
+        </section>
     </main>
 
 </body>

@@ -1,39 +1,40 @@
 'use strict'
 
-var gCurrColor = 'black';
-var gCurrStrokeColor = 'white';
-var gCurrfont = '40px Impact';
-var gCurrTextAlign = 'center'
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [{
-        txt: 'I never eat Falafel',
-        size: 20,
-        align: 'left',
-        color: 'black',
-        strokeColor: 'white',
-        position: {
-            x: 300,
-            y: 100
+            txt: 'first line',
+            size: 40,
+            align: 'left',
+            color: 'black',
+            strokeColor: 'white',
+            position: {
+                x: 250,
+                y: 100
+            },
+            font: 'Impact',
         },
-        font: '20px Impact',
-    }]
+        {
+            txt: 'second line',
+            size: 40,
+            align: 'left',
+            color: 'black',
+            strokeColor: 'white',
+            position: {
+                x: 250,
+                y: 600
+            },
+            font: 'Impact',
+        }
+    ]
 }
 var gCurrLine = gMeme.lines[gMeme.selectedLineIdx];
 
-function drawText(text, x, y) {
-    gCtx.lineWidth = 2;
-    gCtx.strokeStyle = gCurrStrokeColor;
-    gCtx.fillStyle = gCurrColor;
-    gCtx.font = gCurrfont;
-    gCtx.textAlign = gCurrTextAlign;
-    gCtx.fillText(text, x, y);
-    gCtx.strokeText(text, x, y);
-}
 
-function drawImg(imgId) {
-    var img = getImg(imgId);
+
+function drawImg() {
+    var img = getImg(gMeme.selectedImgId);
     drawImgFromlocal(img.url);
 }
 
@@ -42,28 +43,39 @@ function drawImgFromlocal(imgUrl) {
     img.src = imgUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
+        console.log('drawing');
+        drawText();
     }
 }
 
-
-function getLine(text) {
-    gMeme.lines.push(createLine(text));
+function updateImgId(imgId) {
+    gMeme.selectedImgId = imgId;
 }
 
-function createLine(text) {
-    return {
-        txt: 'Enter your text',
-        size: 20,
-        font: '20px Impact',
-        align: 'left',
-        color: 'black',
-        strokeColor: 'white',
-        position: {
-            x: 300,
-            y: 100
-        }
-    }
+function getLines() {
+    return gMeme.lines;
 }
+
+function getCurrLine() {
+    return gCurrLine;
+}
+
+
+
+// function createLine(text) {
+//     return {
+//         txt: 'Enter your text',
+//         size: 20,
+//         font: '20px Impact',
+//         align: 'left',
+//         color: 'black',
+//         strokeColor: 'white',
+//         position: {
+//             x: 300,
+//             y: 100
+//         }
+//     }
+// }
 
 function updateLines(text) {
     gMeme.lines.push(createLine(text));
@@ -81,14 +93,14 @@ function updateFontSize(ev) {
     var val = +ev.target.dataset.value
     switch (val) {
         case 1:
-            gMeme.lines[gMeme.selectedLineIdx].size++;
+            gMeme.lines[gMeme.selectedLineIdx].size += 3;
 
             break;
         case -1:
-            gMeme.lines[gMeme.selectedLineIdx].size--;
+            gMeme.lines[gMeme.selectedLineIdx].size -= 3;
             break;
     }
-    // console.log(gMeme.lines[gMeme.selectedLineIdx].size);
+    drawImg()
 }
 
 function updateTextAlign(ev) {
@@ -102,9 +114,28 @@ function updateTextAlign(ev) {
         case 'left':
             gMeme.lines[gMeme.selectedLineIdx].align = 'left';
     }
-    // console.log(gMeme.lines[gMeme.selectedLineIdx].align);
+    drawImg();
 }
 
+function updateYPosition(ev) {
+    var val = ev.target.dataset.value;
+    console.log(val);
+    switch (val) {
+        case 'up':
+            gCurrLine.position.y -= 20;
+        case 'down':
+            gCurrLine.position.y += 20;
+    }
+    console.log(gCurrLine.position.y);
+    drawImg();
+}
+
+function updateCurrLine() {
+    gMeme.selectedLineIdx++;
+    console.log('hi');
+    if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0;
+    gCurrLine = gMeme.lines[gMeme.selectedLineIdx];
+}
 // function resizeCanvas(elImg) {
 //     var elContainer = document.querySelector('.canvas-container');
 //     gCanvas.width = elContainer.offsetWidth
