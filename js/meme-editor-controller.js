@@ -94,14 +94,12 @@ function switchLine() {
     document.querySelector('.text-line').focus();
 }
 
-function onRemoveLine() { //not working
+function onRemoveLine() {
     var elRemovehBtn = document.querySelector('.btn-delete-line');
     elRemovehBtn.addEventListener('click', removeLine);
 }
 
 function removeLine() {
-    console.log('remove idx:', gMeme.selectedLineIdx);
-    console.log(gMeme.lines);
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     if (gMeme.selectedLineIdx > 0) {
         updateCurrLine(-1);
@@ -112,7 +110,6 @@ function removeLine() {
     } else {
         document.querySelector('.text-line').value = '';
     }
-    console.log(gMeme.lines);
     drawImg();
 }
 
@@ -126,14 +123,12 @@ function onBtnColor() {
     elBtnColor.addEventListener('click', onChangeColor);
 }
 
-function onChangeStroke(ev, val) {
-    // ev.classList.remove('hide');
+function onChangeStroke(val) {
     updateStroke(val);
     drawImg();
 }
 
-function onChangeColor(ev, val) {
-    // ev.classList.remove('hide');
+function onChangeColor(val) {
     updateColor(val);
     drawImg();
 }
@@ -145,7 +140,6 @@ function onSetFont(val) {
 
 
 function onDownload(elBtn) {
-    console.log('hi');
     var canvasData = gCanvas.toDataURL();
     elBtn.href = canvasData;
     elBtn.download = 'my-canvas.jpg';
@@ -155,19 +149,3 @@ function closeModal() {
     var elModal = document.querySelector('.share-modal')
     elModal.hidden = true
 }
-
-
-
-// addMouseListeners()
-// addTouchListeners()
-// window.addEventListener('resize', () => {
-// resizeCanvas()
-// })
-// console.log(gCtx.font);
-
-
-// Window.addEventListener('click', doStuff(event));
-
-// function doStuff(event) {
-//     console.log(event.target.class);
-// }

@@ -1,17 +1,15 @@
 'use strict'
 
-//<li class="gallery-nav">Gallery</li>
-//<li class="memes-nav">Memes</li>
-//<li class="about-nav">About</li>
-
 function OnNav() {
     var elNav = document.querySelector('.nav-bar');
     elNav.addEventListener('click', foo);
+    //relevant for future develop
     // const elGallery = document.querySelector('.gallery');
     // const elMemes = document.querySelector('.memes');
     // const elAbout = document.querySelector('.about-modal');
     const elEditor = document.querySelector('.meme-editor');
     elEditor.classList.add('hide');
+    //relevant for future develop
     // elMemes.hidden = true;
     // elAbout.hidden = true;
     // elGallery.hidden = false;
@@ -25,37 +23,25 @@ function foo(ev) {
     const elEditor = document.querySelector('.meme-editor');
     switch (pageName) {
         case 'Gallery':
-            console.log('test');
             elEditor.classList.add('hide');
             elMemes.hidden = true;
             elAbout.hidden = true;
             elGallery.hidden = false;
-            console.log(elGallery);
             renderGallery();
             break;
-        case 'Memes':
+        case 'Memes': //relevant for future develop
             // elEditor.classList.add('hide');
             // elGallery.classList.add('hide');
             // elAbout.classList.add('hide');
             // elMemes.classList.remove('hide');
-            renderMemes();
+            // renderMemes();
             break;
-        case 'About':
+        case 'About': //relevant for future develop
             // elEditor.classList.add('hide');
             // elMemes.classList.add('hide');
             // elGallery.classList.add('hide');
             // elAbout.classList.remove('hide');
-            openAboutModal();
+            // openAboutModal();
             break;
     }
-}
-
-function renderMemes() {
-
-
-}
-
-function openAboutModal() {
-
-
 }

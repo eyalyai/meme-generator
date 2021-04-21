@@ -42,8 +42,7 @@ function drawImgFromlocal(imgUrl) {
     var img = new Image()
     img.src = imgUrl;
     img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-        console.log('drawing');
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
         drawText();
     }
 }
@@ -106,7 +105,6 @@ function updateFontSize(ev) {
 
 function updateTextAlign(ev) {
     var val = ev.target.dataset.value;
-    console.log(val);
     switch (val) {
         case 'right':
             gMeme.lines[gMeme.selectedLineIdx].align = 'right';
@@ -118,13 +116,11 @@ function updateTextAlign(ev) {
             gMeme.lines[gMeme.selectedLineIdx].align = 'left';
             break;
     }
-    console.log(gMeme.lines[gMeme.selectedLineIdx].align);
     drawImg();
 }
 
 function updateYPosition(ev) {
     var val = ev.target.dataset.value;
-    console.log(val);
     switch (val) {
         case 'up':
             gCurrLine.position.y -= 20;
@@ -133,7 +129,6 @@ function updateYPosition(ev) {
             gCurrLine.position.y += 20;
             break;
     }
-    console.log(gCurrLine.position.y);
     drawImg();
 }
 
@@ -145,20 +140,13 @@ function updateCurrLine(v = 1) {
 
 
 function updateStroke(val) {
-    gCurrLine.strokeColor = val;
+    gCurrLine.strokeColor = val; //it does work but broke
 }
 
 function updateColor(val) {
-    gCurrLine.color = val;
+    gCurrLine.color = val; //it does work but broke
 }
 
 function updateFont(val) {
-    debugger
     gMeme.lines[gMeme.selectedLineIdx].font = val;
 }
-
-// function resizeCanvas(elImg) {
-//     var elContainer = document.querySelector('.canvas-container');
-//     gCanvas.width = elContainer.offsetWidth
-//     gCanvas.height = elContainer.offsetHeight
-// }

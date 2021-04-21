@@ -29,7 +29,5 @@ function doUploadImg(elForm, onSuccess) {
             return res.text()
         })
         .then(onSuccess)
-        .catch(function(err) {
-            console.error(err)
-        })
+        .catch(function(err) {})
 }

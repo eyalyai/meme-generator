@@ -53,9 +53,9 @@
                     <option value="line">sticker</option>
                     <option value="triangle">sticker</option>
                 </select> -->
-                <form method="post" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                    <input name="img" id="imgData" type="hidden" />
-                    <button class="btn btn-publish" type="submit">Share</button>
+                <form class="post-form" method="post" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input class="post-form" name="img" id="imgData" type="hidden" />
+                    <button class="btn-publish btn" type="submit">Share</button>
                 </form>
                 <button class="btn-download btn" onclick="onDownload()">
                     <a href="#" onclick="onDownload(this)" download="">Download</a>

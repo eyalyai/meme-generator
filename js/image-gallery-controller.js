@@ -24,7 +24,6 @@ function renderKeyWord() {
 }
 
 function onImgSelect(imgId, ev) {
-    // elGallery.classList.add('hide');
     document.querySelector('.gallery').hidden = true;
     initEditor(imgId);
     ev.preventDefault();
@@ -32,7 +31,6 @@ function onImgSelect(imgId, ev) {
 
 
 function onIncreaseKeyFont(keyword) {
-    console.log(keyword);
     increaseKeyFont(keyword);
     updateFilter(keyword);
     renderGallery();
