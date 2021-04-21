@@ -4,26 +4,50 @@
 
 html {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: medium;
 }
 
 body {
     font-size: larger;
-    background-color: lightblue;
+    background-color: #e3e3e3;
+    margin: 0 auto;
 }
 
 .logo {
-    color: #fff;
-    margin-inline-start: 40px;
+    height: 40px;
+    margin-inline-start: 1em;
 }
 
 .main-header {
-    background-color: black;
-    height: 100px;
+    background-color: #ff7f00;
+    height: 5rem;
 }
 
 .main-manu>* {
-    margin-inline-end: 40px;
-    color: #fff
+    padding: 0 20px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 1.5em;
+    line-height: 5rem;
+}
+
+.main-manu>*:hover {
+    background-color: #8a8a8a;
+    cursor: pointer;
+}
+
+.main-manu>*:active {
+    padding: 0 25px;
+    background-color: #633100;
+    /* border-bottom: 6px solid #8a8a8a; */
+}
+
+.main-manu>*:not(:last-child) {
+    border-right: 1px solid #8a8a8a;
+}
+
+.meme-editor {
+    justify-content: center;
 }
 
 .search-bar {
@@ -46,6 +70,34 @@ body {
 
 .control-panel>* {
     font-size: 2em;
+}
+
+footer {
+    background: #ff7f00;
+    padding: 70px 0;
+    text-align: center;
+    border-top: 1px solid #e1e0e0;
+    color: #ffffff;
+    font-family: Montserrat;
+    justify-content: center;
+    flex-direction: column;
+}
+
+footer img {
+    height: 20px;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.btn {
+    height: 1.5em;
+    min-width: 1.5em;
+    border-radius: 10px;
+}
+
+.btn img {
+    height: 30px;
+    object-fit: contain;
 }
 
 

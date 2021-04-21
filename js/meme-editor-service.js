@@ -87,6 +87,7 @@ function updateSelectedLine(text = 'sample') {
 
 function addNewLine() {
     gMeme.lines.push(createLine());
+    updateCurrLine();
 }
 
 function updateFontSize(ev) {
@@ -136,21 +137,12 @@ function updateYPosition(ev) {
     drawImg();
 }
 
-function updateCurrLine() {
-    gMeme.selectedLineIdx++;
+function updateCurrLine(v = 1) {
+    gMeme.selectedLineIdx += v;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
     gCurrLine = gMeme.lines[gMeme.selectedLineIdx];
 }
 
-function removeLine() {
-    if (!gMeme.selectedLineIdx === 0 && gMeme.lines.length > 0) return;
-    console.log(gMeme.lines);
-    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-    console.log(gMeme.lines);
-    // if (gMeme.lines.length === 0) {
-
-    // }
-}
 
 function updateStroke(val) {
     gCurrLine.strokeColor = val;

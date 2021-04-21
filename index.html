@@ -11,7 +11,7 @@
 
 <body onload="init()">
     <header class="main-header flex align-center space-between">
-        <logo class="logo">logo</logo>
+        <img class="logo" src="img/LOGO/LOGO.png">
         <nav class="nav-bar">
             <ul class="main-manu flex column clean-list">
                 <li class="gallery-nav" data-value="Gallery">Gallery</li>
@@ -22,7 +22,7 @@
     </header>
 
     <main class="main-screen">
-        <section class="meme-editor container flex space-between">
+        <section class="meme-editor container flex">
             <div class="canvas-container">
                 <canvas id="main-canvas" height="750" width="750"></canvas>
             </div>
@@ -31,14 +31,14 @@
                 <input class="text-line" id="text-line" type="text" oninput="onInputText(this.value)" placeholder="enter your text">
                 <button class="btn-move btn" data-value="up">&#129045;</button>
                 <button class="btn-move btn" data-value="down">&#129047;</button>
-                <button class="btn-switch btn">&#8645;</button>
-                <button class="btn-add-line btn" onclick="onAddLine()">&#43;</button>
-                <button class="btn-delete-line btn">&#x1f5d1;</button>
+                <button class="btn-switch btn"><img src="/img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="btn-add-line btn" onclick="onAddLine()"><img src="/img/ICONS/add.png"></button>
+                <button class="btn-delete-line btn"><img src="/img/ICONS/trash.png"></button>
                 <button class="btn-font-size btn" data-value="1">&#128474;</button>
                 <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
-                <button class="btn-align btn" data-value="right">Align right</button>
-                <button class="btn-align btn" data-value="center">Align center</button>
-                <button class="btn-align btn" data-value="left">Align left</button>
+                <button class="btn-align btn" data-value="right"><img src="/img/ICONS/align-to-right.png"></button>
+                <button class="btn-align btn" data-value="center"><img src="/img/ICONS/center-text-alignment.png"></button>
+                <button class="btn-align btn" data-value="left"><img src="/img/ICONS/align-to-left.png"></button>
                 <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Ariel">Ariel</option>
@@ -79,7 +79,10 @@
         </section>
         <div class="about-modal"></div>
     </main>
-
+    <footer class="main-footer flex align-center">
+        <img src="/img/LOGO/Layer 2.png">
+        <small>all right reserved 2021</small>
+    </footer>
 </body>
 <script src="js/main.js"></script>
 <script src="js/image-gallery-controller.js"></script>

@@ -22,7 +22,11 @@ function onInputText() {
 }
 
 function drawText() {
-    getCurrLine().txt = document.querySelector('.text-line').value;
+    var newLine = document.querySelector('.text-line').value;
+    var currLine = getCurrLine();
+    if (currLine && newLine) {
+        currLine.txt = newLine;
+    }
     var lines = getLines();
     lines.forEach(line => {
         gCtx.lineWidth = 2;
@@ -43,7 +47,6 @@ function addListeners() {
     onRemoveLine();
     onBtnStroke();
     onBtnColor();
-    // onSetFont();
     drawImg();
 }
 
@@ -82,6 +85,23 @@ function switchLine() {
 function onRemoveLine() { //not working
     var elRemovehBtn = document.querySelector('.btn-delete-line');
     elRemovehBtn.addEventListener('click', removeLine);
+}
+
+function removeLine() {
+    console.log('remove idx:', gMeme.selectedLineIdx);
+    console.log(gMeme.lines);
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    if (gMeme.selectedLineIdx > 0) {
+        updateCurrLine(-1);
+    }
+    if (gMeme.lines.length > 0) {
+        document.querySelector('.text-line').value = getCurrLine().txt;
+        document.querySelector('.text-line').focus();
+    } else {
+        document.querySelector('.text-line').value = '';
+    }
+    console.log(gMeme.lines);
+    drawImg();
 }
 
 function onBtnStroke() {
