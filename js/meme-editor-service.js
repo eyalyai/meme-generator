@@ -6,11 +6,11 @@ var gMeme = {
     lines: [{
             txt: 'first line',
             size: 40,
-            align: 'left',
+            align: 'center',
             color: 'black',
             strokeColor: 'white',
             position: {
-                x: 250,
+                x: 375,
                 y: 100
             },
             font: 'Impact',
@@ -18,51 +18,15 @@ var gMeme = {
         {
             txt: 'second line',
             size: 40,
-            align: 'left',
+            align: 'center',
             color: 'black',
             strokeColor: 'white',
             position: {
-                x: 250,
+                x: 375,
                 y: 600
             },
             font: 'Impact',
-        },
-        {
-            txt: 'third line',
-            size: 40,
-            align: 'left',
-            color: 'black',
-            strokeColor: 'white',
-            position: {
-                x: 250,
-                y: 500
-            },
-            font: 'Impact',
-        },
-        {
-            txt: 'forth line',
-            size: 40,
-            align: 'left',
-            color: 'black',
-            strokeColor: 'white',
-            position: {
-                x: 250,
-                y: 300
-            },
-            font: 'Impact',
-        },
-        {
-            txt: 'sixt line',
-            size: 40,
-            align: 'left',
-            color: 'black',
-            strokeColor: 'white',
-            position: {
-                x: 250,
-                y: 400
-            },
-            font: 'Impact',
-        },
+        }
     ]
 }
 var gCurrLine = gMeme.lines[gMeme.selectedLineIdx];
@@ -145,11 +109,15 @@ function updateTextAlign(ev) {
     switch (val) {
         case 'right':
             gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+            break;
         case 'center':
             gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+            break;
         case 'left':
             gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+            break;
     }
+    console.log(gMeme.lines[gMeme.selectedLineIdx].align);
     drawImg();
 }
 
@@ -175,14 +143,23 @@ function updateCurrLine() {
 }
 
 function removeLine() {
+    if (!gMeme.selectedLineIdx === 0 && gMeme.lines.length > 0) return;
     console.log(gMeme.lines);
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     console.log(gMeme.lines);
     // if (gMeme.lines.length === 0) {
 
     // }
-    // if (!gMeme.selectedLineIdx === 0 && gMeme.lines.length > 0)
 }
+
+function updateStroke(val) {
+    gCurrLine.strokeColor = val;
+}
+
+function updateColor(val) {
+    gCurrLine.color = val;
+}
+
 // function resizeCanvas(elImg) {
 //     var elContainer = document.querySelector('.canvas-container');
 //     gCanvas.width = elContainer.offsetWidth

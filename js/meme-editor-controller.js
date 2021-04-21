@@ -44,6 +44,8 @@ function addListeners() {
     onBtnMove();
     onSwitchLine();
     onRemoveLine();
+    onBtnStroke();
+    onBtnColor();
     drawImg();
 }
 
@@ -55,6 +57,7 @@ function onBtnFontSize() {
 function onBtnTextAlign() {
     var elAlignBtns = document.querySelectorAll('.btn-align');
     Array.from(elAlignBtns).map(btn => btn.addEventListener('click', updateTextAlign));
+    drawImg();
 }
 
 function onBtnMove() {
@@ -73,10 +76,47 @@ function switchLine() {
     document.querySelector('.text-line').focus();
 }
 
-function onRemoveLine() {
+function onRemoveLine() { //not working
     var elRemovehBtn = document.querySelector('.btn-delete-line');
     elRemovehBtn.addEventListener('click', removeLine);
 }
+
+function onBtnStroke() {
+    var elBtnStroke = document.querySelector('.btn-stroke');
+    elBtnStroke.addEventListener('click', onChangeStroke);
+}
+
+function onBtnColor() {
+    var elBtnColor = document.querySelector('.btn-color');
+    elBtnColor.addEventListener('click', onChangeColor);
+}
+
+function onChangeStroke(ev, val) {
+    // ev.classList.remove('hide');
+    updateStroke(val)
+    drawImg();
+}
+
+function onChangeColor(ev, val) {
+    // ev.classList.remove('hide');
+    updateColor(val)
+    drawImg();
+}
+
+
+function onDownload(elBtn) {
+    console.log('hi');
+    var canvasData = gCanvas.toDataURL();
+    elBtn.href = canvasData;
+    elBtn.download = 'my-canvas.jpg';
+}
+
+function closeModal() {
+    var elModal = document.querySelector('.share-modal')
+    elModal.hidden = true
+}
+
+
 
 // addMouseListeners()
 // addTouchListeners()
