@@ -111,6 +111,11 @@ footer img {
     box-shadow: 0 0 9px 3px #0000006b;
 }
 
+.control-panel {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
 
 /* helpers */
 
