@@ -62,31 +62,31 @@ function getCurrLine() {
 
 
 
-// function createLine(text) {
-//     return {
-//         txt: 'Enter your text',
-//         size: 20,
-//         font: '20px Impact',
-//         align: 'left',
-//         color: 'black',
-//         strokeColor: 'white',
-//         position: {
-//             x: 300,
-//             y: 100
-//         }
-//     }
-// }
-
-function updateLines(text) {
-    gMeme.lines.push(createLine(text));
-    drawText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y)
+function createLine() {
+    return {
+        txt: 'New line',
+        size: 40,
+        align: 'center',
+        color: 'black',
+        strokeColor: 'white',
+        position: {
+            x: 375,
+            y: 375
+        },
+        font: 'Impact',
+    }
 }
+
 
 function updateSelectedLine(text = 'sample') {
     if (!gMeme.selectedLineIdx) {
         gMeme.selectedLineIdx = 1;
         return;
     } else drawText(text, 300, 500);
+}
+
+function addNewLine() {
+    gMeme.lines.push(createLine());
 }
 
 function updateFontSize(ev) {
@@ -158,6 +158,11 @@ function updateStroke(val) {
 
 function updateColor(val) {
     gCurrLine.color = val;
+}
+
+function updateFont(val) {
+    debugger
+    gMeme.lines[gMeme.selectedLineIdx].font = val;
 }
 
 // function resizeCanvas(elImg) {

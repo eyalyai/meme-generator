@@ -32,22 +32,22 @@
                 <button class="btn-move btn" data-value="up">&#129045;</button>
                 <button class="btn-move btn" data-value="down">&#129047;</button>
                 <button class="btn-switch btn">&#8645;</button>
-                <button class="btn-add-line btn">&#43;</button>
+                <button class="btn-add-line btn" onclick="onAddLine()">&#43;</button>
                 <button class="btn-delete-line btn">&#x1f5d1;</button>
                 <button class="btn-font-size btn" data-value="1">&#128474;</button>
                 <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
-                <button class="btn-align btn" data-value="right">-</button>
-                <button class="btn-align btn" data-value="center">-</button>
-                <button class="btn-align btn" data-value="left">-</button>
+                <button class="btn-align btn" data-value="right">Align right</button>
+                <button class="btn-align btn" data-value="center">Align center</button>
+                <button class="btn-align btn" data-value="left">Align left</button>
                 <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
-                    <option value="line">font</option>
-                    <option value="triangle">font</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
                 </select>
 
                 <label for="stroke-color" class="btn-stroke btn">S</label>
                 <input class="stroke-color" id="stroke-color" type="color" oninput="onChangeStroke(this,this.value)">
                 <label for="fill-color" class="btn-color btn">&#127912</label>
-                <input class="fill-color" id="fill-color" type="color" oninput="onChangeColor(this,this.value)">
+                <input class="fill-color" id="fill-color" type="color" oninput="onChangeColor(this,this.value)" value="#ffffff">
                 <!-- bonus -->
                 <!-- <select class="sticker-select" name="sticker" id="sticker" onchange="onSetFont(this.value)">
                     <option value="line">sticker</option>
@@ -66,10 +66,17 @@
 
         <section class="gallery">
             <section class="search-bar container flex space-between">
-                <input type="text" name="search" placeholder="Search keys words">
-                <div class="sort-by">Lorem ipsum dolor sit amet. - temp</div>
+                <input class="keys-serach" type="text" name="search" placeholder="Search key words" oninput="onKeySearch(this.value)">
+                <div class="keys-sort">
+
+                </div>
             </section>
-            <section class="img-gallery container grid align-center space-between container"></section>
+            <section class="img-gallery container grid align-center space-between "></section>
+        </section>
+        <section class="memes">
+            <section class="memes-gallery container grid align-center space-between ">
+
+            </section>
         </section>
     </main>
 

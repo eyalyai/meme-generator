@@ -46,6 +46,7 @@ function addListeners() {
     onRemoveLine();
     onBtnStroke();
     onBtnColor();
+    // onSetFont();
     drawImg();
 }
 
@@ -63,6 +64,11 @@ function onBtnTextAlign() {
 function onBtnMove() {
     var elMoveBtns = document.querySelectorAll('.btn-move');
     Array.from(elMoveBtns).map(btn => btn.addEventListener('click', updateYPosition));
+}
+
+function onAddLine() {
+    addNewLine();
+    drawImg();
 }
 
 function onSwitchLine() {
@@ -93,13 +99,18 @@ function onBtnColor() {
 
 function onChangeStroke(ev, val) {
     // ev.classList.remove('hide');
-    updateStroke(val)
+    updateStroke(val);
     drawImg();
 }
 
 function onChangeColor(ev, val) {
     // ev.classList.remove('hide');
-    updateColor(val)
+    updateColor(val);
+    drawImg();
+}
+
+function onSetFont(val) {
+    updateFont(val);
     drawImg();
 }
 
