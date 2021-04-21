@@ -3,6 +3,7 @@
 function init() {
     renderGallery();
     renderKeyWord();
+    OnNav();
 }
 
 function renderGallery() {
@@ -23,8 +24,8 @@ function renderKeyWord() {
 }
 
 function onImgSelect(imgId, ev) {
-    const elGallery = document.querySelector('.gallery');
-    elGallery.classList.add('hide');
+    // elGallery.classList.add('hide');
+    document.querySelector('.gallery').hidden = true;
     initEditor(imgId);
     ev.preventDefault();
 }

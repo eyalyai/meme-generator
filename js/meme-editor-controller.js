@@ -1,8 +1,5 @@
 'use strict'
 
-
-var gElEditor = document.querySelector('.meme-editor');
-// var gElTxtValue = document.querySelector('.text-line').value;    
 var gCanvas;
 var gCtx;
 

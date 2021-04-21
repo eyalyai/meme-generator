@@ -14,15 +14,15 @@
         <logo class="logo">logo</logo>
         <nav class="nav-bar">
             <ul class="main-manu flex column clean-list">
-                <li class="gallery-nav">Gallery</li>
-                <li class="memes-nav">Memes</li>
-                <li class="about-nav">About</li>
+                <li class="gallery-nav" data-value="Gallery">Gallery</li>
+                <li class="memes-nav" data-value="Memes">Memes</li>
+                <li class="about-nav" data-value="About">About</li>
             </ul>
         </nav>
     </header>
 
     <main class="main-screen">
-        <section class="meme-editor hide container flex space-between">
+        <section class="meme-editor container flex space-between">
             <div class="canvas-container">
                 <canvas id="main-canvas" height="750" width="750"></canvas>
             </div>
@@ -75,9 +75,9 @@
         </section>
         <section class="memes">
             <section class="memes-gallery container grid align-center space-between ">
-
             </section>
         </section>
+        <div class="about-modal"></div>
     </main>
 
 </body>
