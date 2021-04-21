@@ -26,20 +26,20 @@
             <div class="canvas-container">
                 <canvas id="main-canvas" height="750" width="750"></canvas>
             </div>
-            <section class="control-panel grid">
+            <section class="control-panel">
                 <label for="text-line" hidden></label>
-                <input class="text-line" id="text-line" type="text" oninput="onInputText(this.value)" placeholder="enter your text">
-                <button class="btn-move btn" data-value="up">&#129045;</button>
-                <button class="btn-move btn" data-value="down">&#129047;</button>
+                <input class="text-line btn" id="text-line" type="text" oninput="onInputText(this.value)" placeholder="enter your text">
+                <button class="btn-move btn-down btn" data-value="down">&#129047;</button>
+                <button class="btn-move btn-up btn" data-value="up">&#129045;</button>
                 <button class="btn-switch btn"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                 <button class="btn-add-line btn" onclick="onAddLine()"><img src="img/ICONS/add.png"></button>
                 <button class="btn-delete-line btn"><img src="img/ICONS/trash.png"></button>
-                <button class="btn-font-size btn" data-value="1">&#128474;</button>
-                <button class="btn-font-size btn" data-value="-1">&#x1f5db;</button>
-                <button class="btn-align btn" data-value="right"><img src="img/ICONS/align-to-right.png"></button>
-                <button class="btn-align btn" data-value="center"><img src="img/ICONS/center-text-alignment.png"></button>
-                <button class="btn-align btn" data-value="left"><img src="img/ICONS/align-to-left.png"></button>
-                <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
+                <button class="btn-font-size btn-increase btn" data-value="1">&#128474;</button>
+                <button class="btn-font-size btn-decrease btn" data-value="-1">&#x1f5db;</button>
+                <button class="btn-align btn-right btn" data-value="right"><img src="img/ICONS/align-to-right.png"></button>
+                <button class="btn-align btn-center btn" data-value="center"><img src="img/ICONS/center-text-alignment.png"></button>
+                <button class="btn-align btn-left btn" data-value="left"><img src="img/ICONS/align-to-left.png"></button>
+                <select class="font-select btn" name="font" id="font" onchange="onSetFont(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Ariel">Ariel</option>
                 </select>
@@ -61,11 +61,11 @@
                     <a href="#" onclick="onDownload(this)" download="">Download</a>
                 </button>
             </section>
-            <div class="modal share-modal" hidden></div>
+            <div class="modal share-modal btn" hidden></div>
         </section>
 
         <section class="gallery">
-            <section class="search-bar container flex space-between">
+            <section class="search-bar flex space-between align-center">
                 <input class="keys-serach" type="text" name="search" placeholder="Search key words" oninput="onKeySearch(this.value)">
                 <div class="keys-sort">
 

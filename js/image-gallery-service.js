@@ -2,8 +2,8 @@
 var gFilter = undefined;
 var gKeywords = {
     'happy': 16,
-    'funny': 16,
-    'funny puk': 16
+    'funny': 20,
+    'funny puk': 13
 
 };
 var gImgs = [

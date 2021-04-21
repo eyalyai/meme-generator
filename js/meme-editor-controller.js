@@ -39,7 +39,19 @@ function drawText() {
     });
 }
 
+function resizeCanvas() {
+    document.querySelector('#main-canvas').style.width = '100%';
+    document.querySelector('#main-canvas').style.height = '100%';
+}
+
+function onResize() {
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+    })
+}
+
 function addListeners() {
+    onResize();
     onBtnFontSize();
     onBtnTextAlign();
     onBtnMove();
