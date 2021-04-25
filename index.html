@@ -9,20 +9,20 @@
     <title>Meme-generator</title>
 </head>
 
-<body onload="init()">
+<body class="flex column" onload="init()">
     <header class="main-header flex align-center space-between">
         <img class="logo" src="img/LOGO/LOGO.png">
         <nav class="nav-bar">
-            <ul class="main-manu flex column clean-list">
+            <ul class="main-manu flex clean-list">
                 <li class="gallery-nav" data-value="Gallery">Gallery</li>
                 <li class="memes-nav" data-value="Memes">Memes</li>
-                <li class="about-nav" data-value="About">About</li>
+                <!-- <li class="about-nav" data-value="About">About</li> -->
             </ul>
         </nav>
     </header>
 
     <main class="main-screen">
-        <section class="meme-editor container flex">
+        <section class="meme-editor container flex align-center">
             <div class="canvas-container">
                 <canvas id="main-canvas" height="750" width="750"></canvas>
             </div>
@@ -30,36 +30,42 @@
                 <label for="text-line" hidden></label>
                 <input class="text-line btn" id="text-line" type="text" oninput="onInputText(this.value)" placeholder="enter your text">
                 <button class="btn-move btn-down btn" data-value="down">&#129047;</button>
+                <button class="btn-align btn-left btn" data-value="left"><img src="img/ICONS/align-to-left.png"></button>
+                <button class="btn-align btn-center btn" data-value="center"><img src="img/ICONS/center-text-alignment.png"></button>
+                <button class="btn-align btn-right btn" data-value="right"><img src="img/ICONS/align-to-right.png"></button>
                 <button class="btn-move btn-up btn" data-value="up">&#129045;</button>
                 <button class="btn-switch btn"><img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                 <button class="btn-add-line btn" onclick="onAddLine()"><img src="img/ICONS/add.png"></button>
                 <button class="btn-delete-line btn"><img src="img/ICONS/trash.png"></button>
                 <button class="btn-font-size btn-increase btn" data-value="1">&#128474;</button>
                 <button class="btn-font-size btn-decrease btn" data-value="-1">&#x1f5db;</button>
-                <button class="btn-align btn-right btn" data-value="right"><img src="img/ICONS/align-to-right.png"></button>
-                <button class="btn-align btn-center btn" data-value="center"><img src="img/ICONS/center-text-alignment.png"></button>
-                <button class="btn-align btn-left btn" data-value="left"><img src="img/ICONS/align-to-left.png"></button>
                 <select class="font-select btn" name="font" id="font" onchange="onSetFont(this.value)">
                     <option value="Impact">Impact</option>
-                    <option value="Ariel">Ariel</option>
+                    <option value="Arial">Arial</option>
                 </select>
-
-                <label for="stroke-color" class="btn-stroke btn">S</label>
-                <input class="stroke-color" id="stroke-color" type="color" oninput="onChangeStroke(this,this.value)">
-                <label for="fill-color" class="btn-color btn">&#127912</label>
-                <input class="fill-color" id="fill-color" type="color" oninput="onChangeColor(this,this.value)" value="#ffffff">
+                <div class="color-container">
+                    <label class="btn-stroke btn">S
+                        <input class="stroke-color" id="stroke-color" type="color" oninput="onChangeStroke(this.value)">
+                    </label>
+                    <label for="fill-color" class="btn-color btn">&#127912
+                        <input class="fill-color" id="fill-color" type="color" oninput="onChangeColor(this.value)" value="#ffffff">
+                    </label>
+                </div>
                 <!-- bonus -->
                 <!-- <select class="sticker-select" name="sticker" id="sticker" onchange="onSetFont(this.value)">
                     <option value="line">sticker</option>
                     <option value="triangle">sticker</option>
                 </select> -->
-                <form class="post-form" method="post" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                    <input class="post-form" name="img" id="imgData" type="hidden" />
-                    <button class="btn-publish btn" type="submit">Share</button>
-                </form>
-                <button class="btn-download btn" onclick="onDownload()">
-                    <a href="#" onclick="onDownload(this)" download="">Download</a>
-                </button>
+                <div class="actions-btn-container flex space-between align-center">
+                    <form class="post-form" method="post" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input class="post-form" name="img" id="imgData" type="hidden" />
+                        <button class="btn-publish btn" type="submit">Share</button>
+                    </form>
+                    <button class="btn-download btn" onclick="onDownload()">
+                        <a href="#" onclick="onDownload(this)" download="">Download</a>
+                    </button>
+
+                </div>
             </section>
             <div class="modal share-modal btn" hidden></div>
         </section>

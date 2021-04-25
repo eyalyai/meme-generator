@@ -9,7 +9,7 @@ function uploadImg(elForm, ev) {
         uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         var elModal = document.querySelector('.share-modal')
         elModal.innerHTML = `
-        <h3>Are you sure you want to share this Canvas?</h3>
+        <h3>Share to Facebook?</h3>
         <button class="btn share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); closeModal(); return false;">
            Share   
         </button>

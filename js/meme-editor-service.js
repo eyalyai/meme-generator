@@ -132,19 +132,21 @@ function updateYPosition(ev) {
     drawImg();
 }
 
-function updateCurrLine(v = 1) {
-    gMeme.selectedLineIdx += v;
+function updateCurrLine(val = 1) {
+    //val: if a line was removed selected index is index-1
+    gMeme.selectedLineIdx += val;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
     gCurrLine = gMeme.lines[gMeme.selectedLineIdx];
 }
 
 
 function updateStroke(val) {
-    gCurrLine.strokeColor = val; //it does work but broke
+    gCurrLine.strokeColor = val;
 }
 
 function updateColor(val) {
-    gCurrLine.color = val; //it does work but broke
+    console.log(gCurrLine.color);
+    gCurrLine.color = val;
 }
 
 function updateFont(val) {

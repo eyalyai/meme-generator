@@ -1,9 +1,12 @@
 'use strict'
 
+// TODO: create Saved-Memes page
+// TODO: create About page OR add info in the footer 
+
 function OnNav() {
     var elNav = document.querySelector('.nav-bar');
-    elNav.addEventListener('click', foo);
-    //relevant for future develop
+    elNav.addEventListener('click', NavigateToPage);
+    //relevant for future develop 
     // const elGallery = document.querySelector('.gallery');
     // const elMemes = document.querySelector('.memes');
     // const elAbout = document.querySelector('.about-modal');
@@ -15,7 +18,7 @@ function OnNav() {
     // elGallery.hidden = false;
 }
 
-function foo(ev) {
+function NavigateToPage(ev) {
     var pageName = ev.target.dataset.value;
     const elGallery = document.querySelector('.gallery');
     const elMemes = document.querySelector('.memes');

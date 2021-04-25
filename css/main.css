@@ -2,15 +2,31 @@
     box-sizing: border-box;
 }
 
+
+/* TYPOGRAPHY */
+
+@font-face {
+    font-family: Montserrat;
+    src: url(/font/Montserrat/Montserrat-Regular.ttf);
+}
+
+
+/* BASE */
+
 html {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: medium;
+    font-family: Montserrat, Impact, sans-serif, 'Arial Narrow Bold';
+    /* font-size: medium; */
 }
 
 body {
     font-size: larger;
     background-color: #e3e3e3;
     margin: 0 auto;
+    min-height: 100vh;
+}
+
+.main-screen {
+    flex-grow: 1;
 }
 
 .logo {
@@ -21,6 +37,7 @@ body {
 .main-header {
     background-color: #ff7f00;
     height: 5rem;
+    width: 100vw;
 }
 
 .main-manu>* {
@@ -43,7 +60,6 @@ body {
 .main-manu>*:active {
     padding: 0 25px;
     background-color: #633100;
-    /* border-bottom: 6px solid #8a8a8a; */
 }
 
 .main-manu>*:not(:last-child) {
@@ -52,6 +68,29 @@ body {
 
 .meme-editor {
     justify-content: center;
+}
+
+
+/* flex helper */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.hide {
+    display: none;
+}
+
+.column {
+    flex-direction: column;
 }
 
 .search-bar {
@@ -64,23 +103,34 @@ body {
 }
 
 .keys-sort>* {
-    margin-left: 1rem;
-    font-size: 1.5rem;
-}
-
-.img-gallery>* {
-    object-fit: contain;
-    max-width: 9em;
+    margin-inline-end: 40px;
+    font-family: Montserrat;
 }
 
 .img-gallery {
     background-color: #e3e3e3;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 4em;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px
+}
+
+.img-gallery>* {
+    width: 100%;
+    cursor: pointer;
+}
+
+.img-gallery>*:hover {
+    border-radius: 5px;
+    box-shadow: 0 0 9px 3px #0000006b;
 }
 
 .control-panel>* {
     font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+    font-size: inherit;
+    color: #ffffff;
 }
 
 .control-panel {
@@ -105,11 +155,12 @@ footer img {
 }
 
 .btn {
-    height: 1.5em;
-    min-width: 1.5em;
+    height: 60px;
+    min-width: 60px;
     border-radius: 10px;
+    border: none;
     background-color: #fff;
-    margin-top: 10px;
+    cursor: pointer;
 }
 
 .btn img {
@@ -122,6 +173,7 @@ footer img {
     border: 0;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
     font-size: 20px;
+    min-width: 1.5em;
 }
 
 
@@ -140,16 +192,17 @@ footer img {
 }
 
 .control-panel {
-    /* display: grid;    */
-    /* gap: 10px; */
+    display: grid;
     justify-items: center;
-    grid-auto-columns: 1fr;
+    align-items: center;
+    gap: 20px;
+    grid-template-areas: "txt txt txt txt txt" "up  aleft acenter aright down" ". switch addline trash ." "increase decrease font font font" ". color color color ." "action action action action action";
 }
 
 .text-line {
+    grid-area: txt;
     margin: 0;
     margin-top: 20px;
-    grid-area: txt;
     width: max-content;
 }
 
@@ -169,7 +222,7 @@ footer img {
     grid-area: addline;
 }
 
-.btn-add-line {
+.btn-delete-line {
     grid-area: trash;
 }
 
@@ -193,57 +246,63 @@ footer img {
     grid-area: aright;
 }
 
-.font select {
+.btn-stroke {
+    grid-area: strokes;
+    color: #121FCF;
+}
+
+.btn-fill {
+    grid-area: fills;
+    margin-left: 10px;
+}
+
+.font-select {
     grid-area: font;
 }
 
-.stroke-color {
-    visibility: hidden;
-    height: 0;
-    width: 0;
+.actions-btn-container {
+    grid-area: action;
+    gap: 10px;
 }
 
+.color-container {
+    grid-area: color;
+}
+
+
+/* s */
+
+.stroke-color,
 .fill-color {
     visibility: hidden;
     height: 0;
     width: 0;
 }
 
+.fill-color {
+    grid-area: fillc;
+}
+
+.stroke-color {
+    grid-area: strokec;
+}
+
 .btn-publish,
 .btn-download {
-    display: inline-block;
-    color: #c2c2c2;
-    border: 2px solid #c2c2c2;
-    height: 40px;
-    width: 200px;
-    line-height: 36px;
     padding: 0 25px;
-    border-radius: 20px;
-    text-decoration: none;
+    font-family: montesrrat-medium;
+    font-size: 1em;
+    color: #ffffff;
+    width: 100%;
     text-align: center;
-    margin: 1.25rem 0;
-    transition: all .3s;
-    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff7f00;
 }
 
+.btn-download:hover,
 .btn-publish:hover {
-    background: #516fad;
-    border-color: #516fad;
-    color: #fff;
-}
-
-.btn-download:hover {
-    background-color: #516fad;
-}
-
-a {
-    text-decoration: none;
-    font-size: inherit;
-    color: black;
-}
-
-.post-form {
-    max-width: 100px;
+    background-color: #8a8a8a;
 }
 
 
@@ -268,11 +327,19 @@ a {
     text-align: center;
     top: 50vh;
     left: 50vw;
+    font-size: 1.5rem;
     transform: translate(-50%, -50%);
     color: rgb(44, 44, 44);
     background-color: rgba(255, 255, 255, 0.808);
     border: 2px solid rgb(44, 44, 44);
-    padding: 50px 50px;
+    border-radius: 30px;
+    height: 200px;
+    width: 400px;
+}
+
+.modal>.btn {
+    font-size: 1.5rem;
+    border: 0.5px solid #9d9d9d;
 }
 
 .modal h3 {
@@ -289,19 +356,30 @@ a {
     color: rgb(7, 212, 0);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .container {
         margin: 0.5rem;
     }
     .meme-editor {
-        flex-direction: row;
+        flex-direction: column;
     }
     .canvas-container {
         margin-right: 10px;
     }
+    footer,
+    header,
+    .search-bar {
+        width: 100vw;
+    }
+    .search-bar {
+        flex-direction: column;
+    }
+    .text-line {
+        max-width: 400px;
+    }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 500px) {
     .container {
         margin: 0.5rem;
         padding: 1rem 1.5rem;
@@ -315,23 +393,7 @@ a {
     .main-manu>* {
         font-size: 1em;
     }
-}
-
-
-/* flex helper */
-
-.flex {
-    display: flex;
-}
-
-.align-center {
-    align-items: center;
-}
-
-.space-between {
-    justify-content: space-between;
-}
-
-.hide {
-    display: none;
+    .text-line {
+        max-width: 400px;
+    }
 }

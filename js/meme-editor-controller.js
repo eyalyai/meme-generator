@@ -37,6 +37,8 @@ function drawText() {
         gCtx.fillText(`${line.txt}`, `${line.position.x}`, `${line.position.y}`);
         gCtx.strokeText(`${line.txt}`, `${line.position.x}`, `${line.position.y}`);
     });
+    //todo: support selected line border 
+    //should be download without the border
 }
 
 function resizeCanvas() {
@@ -49,7 +51,7 @@ function onResize() {
         resizeCanvas()
     })
 }
-
+// TODO: Decide - make all buttons, forms, selects and ect.. to listeners OR html funcs
 function addListeners() {
     onResize();
     onBtnFontSize();
@@ -66,7 +68,7 @@ function onBtnFontSize() {
     var elFontSizes = document.querySelectorAll('.btn-font-size');
     Array.from(elFontSizes).map(btn => btn.addEventListener('click', updateFontSize));
 }
-
+//TODO: find how to fix the bug: clicking on the Align-buttons sometimes lose focus from CurrLine 
 function onBtnTextAlign() {
     var elAlignBtns = document.querySelectorAll('.btn-align');
     Array.from(elAlignBtns).map(btn => btn.addEventListener('click', updateTextAlign));
@@ -98,7 +100,7 @@ function onRemoveLine() {
     var elRemovehBtn = document.querySelector('.btn-delete-line');
     elRemovehBtn.addEventListener('click', removeLine);
 }
-
+//TODO: cofigure service - controller
 function removeLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     if (gMeme.selectedLineIdx > 0) {
@@ -131,13 +133,13 @@ function onChangeStroke(val) {
 function onChangeColor(val) {
     updateColor(val);
     drawImg();
+
 }
 
 function onSetFont(val) {
     updateFont(val);
     drawImg();
 }
-
 
 function onDownload(elBtn) {
     var canvasData = gCanvas.toDataURL();
